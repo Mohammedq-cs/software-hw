@@ -77,7 +77,7 @@ public class WordPuzzle {
 	public static char[] getRandomPuzzleCandidate(String word, double prob, Random generator) { // Q - 5
 		char [] puzzle = new char[word.length()];
 		for (int i = 0; i < word.length(); i++){
-			if (generator.nextFloat() <= prob){
+			if (generator.nextFloat() < prob){
 				puzzle[i] = HIDDEN_CHAR;
 			}
 			else {
@@ -280,11 +280,8 @@ public class WordPuzzle {
 			if (response.equals("yes")){
 				puzzle_and_solution = newPuzzle(scanVocabulary, prob, generator, puzzle_and_solution[0]); // TODO check if we can get the samewordtwice
 				printPuzzle(puzzle_and_solution[0]);
-				response = userResponse();
 			}
-			else {
-				response = stage_b3();
-			}
+			response = stage_b3();
 		}
 
 		gameStage(puzzle_and_solution);
